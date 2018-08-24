@@ -2,6 +2,7 @@ package utils
 
 import (
     "os"
+    "fmt"
     "path/filepath"
     "io/ioutil"
 )
@@ -25,7 +26,8 @@ func FilesInDirectory(root string) ([]string, error) {
 	}
 	for _, file := range fileInfo {
 		if !file.IsDir() {
-			files = append(files, file.Name())
+            file_path := fmt.Sprintf("%v/%v", root, file.Name())
+			files = append(files, file_path)
 		}
 	}
 	return files, nil
