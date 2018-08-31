@@ -1,10 +1,10 @@
 package utils
 
 import (
-    "os"
-    "fmt"
-    "path/filepath"
-    "io/ioutil"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 )
 
 func WalkFilesInDirectory(root string) ([]string, error) {
@@ -26,9 +26,16 @@ func FilesInDirectory(root string) ([]string, error) {
 	}
 	for _, file := range fileInfo {
 		if !file.IsDir() {
-            file_path := fmt.Sprintf("%v/%v", root, file.Name())
+			file_path := fmt.Sprintf("%v/%v", root, file.Name())
 			files = append(files, file_path)
 		}
 	}
 	return files, nil
+}
+
+func FileExists(file_name string) bool {
+	if _, err := os.Stat(file_name); err == nil {
+		return true
+	}
+	return false
 }
