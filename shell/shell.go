@@ -6,8 +6,8 @@ import (
 	"os/exec"
 )
 
-// RunShellScript executes shell script with supplied arguments.
-func RunShellScript(script string, args ...string) {
+// RunScript executes shell script with supplied arguments.
+func RunScript(script string, args ...string) {
 	cmd := exec.Command(script, args...)
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
