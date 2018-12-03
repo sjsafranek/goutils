@@ -2,12 +2,13 @@ package shell
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"os/exec"
 )
 
 // RunScript executes shell script with supplied arguments.
-func RunScript(script string, args ...string) {
+func RunScript(script string, args ...string) (string, error) {
 	cmd := exec.Command(script, args...)
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
@@ -15,9 +16,7 @@ func RunScript(script string, args ...string) {
 	cmd.Stderr = &stderr
 	err := cmd.Run()
 	if nil != err {
-		fmt.Println(stderr.String())
-		return
+		return "", errors.New(stderr.String())
 	}
-	fmt.Println(stdout.String())
+	return stdout.String(), nil
 }
-
