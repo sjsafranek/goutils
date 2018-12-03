@@ -3,7 +3,6 @@ package shell
 import (
 	"bytes"
 	"errors"
-	"fmt"
 	"os/exec"
 )
 
