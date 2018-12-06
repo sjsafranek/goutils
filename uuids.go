@@ -29,7 +29,7 @@ func NewUUID() (string, error) {
 }
 
 // newJobId generates and returns an job_id of desired length
-func newJobId(n int) string {
+func RandomString(n int) string {
 	s := ""
 	for i := 1; i <= n; i++ {
 		s += string(_letters[rand.Intn(len(_letters))])
